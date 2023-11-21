@@ -1,13 +1,14 @@
 {
-  "name": "materiaali3",
+  "name": "notebackend",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "start": "node index.js",
     "server": "json-server -p3001 --watch db.json"
   },
   "dependencies": {
@@ -25,5 +26,13 @@
     "eslint-plugin-react-refresh": "^0.4.4",
     "json-server": "^0.17.4",
     "vite": "^5.0.0"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "note"
+  },
+  "author": "Verneri Kilpeläinen",
+  "license": "MIT"
 }
