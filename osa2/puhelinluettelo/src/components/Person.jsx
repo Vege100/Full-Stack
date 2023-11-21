@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-const Person = ({id,  person , removePerson}) => {
+const Person = ({ person , removePerson }) => {
   return (
     <p>
       {person.name} {person.number}
       <button onClick={removePerson}>Remove</button>
     </p>
-  );
-};
+  )
+}
 
-export default Person;
+export default Person

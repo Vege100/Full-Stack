@@ -1,11 +1,11 @@
 import React from 'react'
 import Person from './Person' 
 
-const Persons = ({ showPersons , removePerson}) => {
+const Persons = ({ persons , removePerson}) => {
   return (
     <div>
       <h2>Numbers</h2>
-      {showPersons.map((person) => (
+      {persons.map((person) => (
   <Person key={person.id} person={person} removePerson={() => removePerson(person)} />
 ))}
 
