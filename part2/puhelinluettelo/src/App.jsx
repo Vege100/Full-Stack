@@ -29,16 +29,19 @@ const App = () => {
     const existingPerson = persons.find((person) => person.name === newName)
 
     if (!existingPerson) {
-      try {
-        const responsePerson = await personsService.create({ name: newName, number: newNumber })
-        setPersons([...persons, responsePerson])
-        showNotification(`Added ${newName}`)
-        setNotificationColor('notification-green')
-        setNewName('')
-        setNumber('')
-      } catch (error) {
-        console.error('Error adding person:', error)
-      }
+        personsService
+        .create({ name: newName, number: newNumber }).then(createdPerson => {
+          setPersons([...persons, createdPerson])
+          showNotification(`Added ${newName}`)
+          setNotificationColor('notification-green')
+          setNewName('')
+          setNumber('')
+        })
+        .catch(error => {
+          console.error('Error adding person:', error.response.data)
+          showNotification(`Error adding person: ${error.response.data.error}`)
+          setNotificationColor('notification-red')
+        })
     } else {
       const confirmed = window.confirm(`${newName} is already added to the phonebook, replace the old number with a new one`)
 
@@ -54,6 +57,8 @@ const App = () => {
         })
         .catch((error) => {
           console.error('Error changing number:', error)
+          showNotification('Error changing number:', error.response.data)
+          setNotificationColor('notification-red')
         })
       }
     }
