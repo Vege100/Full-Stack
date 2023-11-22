@@ -2,12 +2,15 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 var morgan = require('morgan')
+const mongoose = require('mongoose')
+require('dotenv').config()
+const Person = require('./models/person')
 
 
 app.use(cors())
 app.use(express.json())
 app.use(express.static('dist'))
-
+const Person = require('./models/person')
 
 morgan.token('postData', (req) => {
     if (req.method === 'POST') {
